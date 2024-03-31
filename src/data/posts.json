@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Primeiro post",
+    "content": "Descrição do primeiro post.",
+    "author": "Autor1",
+    "date": "01/01/2024",
+    "keywords": ["React", "JavaScript", "Web"],
+    "commentsCount": 5,
+    "likesCount": 10,
+    "dislikesCount": 2
+  },
+  {
+    "title": "Segundo post",
+    "content": "Descrição do segundo post.",
+    "author": "Autor2",
+    "date": "02/01/2024",
+    "keywords": ["HTML", "CSS", "Frontend"],
+    "commentsCount": 8,
+    "likesCount": 15,
+    "dislikesCount": 3
+  },
+  {
+    "title": "Terceiro post",
+    "content": "Descrição do terceiro post.",
+    "author": "Autor3",
+    "date": "03/01/2024",
+    "keywords": ["Backend", "Node.js", "Express"],
+    "commentsCount": 3,
+    "likesCount": 12,
+    "dislikesCount": 1
+  },
+  {
+    "title": "Quarto post",
+    "content": "Descrição do quarto post.",
+    "author": "Autor4",
+    "date": "04/01/2024",
+    "keywords": ["Database", "MongoDB", "SQL"],
+    "commentsCount": 6,
+    "likesCount": 18,
+    "dislikesCount": 2
+  },
+  {
+    "title": "Quinto post",
+    "content": "Descrição do quinto post.",
+    "author": "Autor5",
+    "date": "05/01/2024",
+    "keywords": ["API", "REST", "GraphQL"],
+    "commentsCount": 4,
+    "likesCount": 14,
+    "dislikesCount": 0
+  },
+  {
+    "title": "Sexto post",
+    "content": "Descrição do sexto post.",
+    "author": "Autor6",
+    "date": "06/01/2024",
+    "keywords": ["Testing", "Jest", "Enzyme"],
+    "commentsCount": 7,
+    "likesCount": 20,
+    "dislikesCount": 5
+  },
+  {
+    "title": "Sétimo post",
+    "content": "Descrição do sétimo post.",
+    "author": "Autor7",
+    "date": "07/01/2024",
+    "keywords": ["DevOps", "Docker", "Kubernetes"],
+    "commentsCount": 9,
+    "likesCount": 25,
+    "dislikesCount": 1
+  },
+  {
+    "title": "Oitavo post",
+    "content": "Descrição do oitavo post.",
+    "author": "Autor8",
+    "date": "08/01/2024",
+    "keywords": ["Cloud", "AWS", "Azure"],
+    "commentsCount": 2,
+    "likesCount": 8,
+    "dislikesCount": 3
+  },
+  {
+    "title": "Nono post",
+    "content": "Descrição do nono post.",
+    "author": "Autor9",
+    "date": "09/01/2024",
+    "keywords": ["Machine Learning", "Python", "TensorFlow"],
+    "commentsCount": 11,
+    "likesCount": 30,
+    "dislikesCount": 0
+  },
+  {
+    "title": "Décimo post",
+    "content": "Descrição do décimo post.",
+    "author": "Autor10",
+    "date": "10/01/2024",
+    "keywords": ["Blockchain", "Ethereum", "Smart Contracts"],
+    "commentsCount": 6,
+    "likesCount": 22,
+    "dislikesCount": 4
+  }
+]
