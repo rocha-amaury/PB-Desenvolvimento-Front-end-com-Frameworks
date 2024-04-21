@@ -11,7 +11,7 @@ function Post({ title, content, author, date, keywords, commentsCount, likesCoun
       <p>Comentários: {commentsCount}</p>
       <p>Curtidas: {likesCount}</p>
       <p>Descurtidas: {dislikesCount}</p>
-      {/* Adicione aqui os botões de interação, como curtir, descurtir, comentar, etc. */}
+
     </div>
   );
 }
