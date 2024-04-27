@@ -1,34 +1,25 @@
+import "@fontsource/roboto";
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import Login from './components/Login';
-import PostList from './components/PostList';
-// import Navbar from './components/Navbar';
-// import UserProfile from './components/UserProfile';
 import { fetchData } from './api/api';
+import { Header } from "./layout/Header/Header.jsx";
+import PostListScreen from "./screens/PostListScreen.jsx";
+import HomeScreen from "./screens/HomeScreen.jsx";
+import LoginScreen from "./screens/LoginScreen.jsx"
 
-function App() {
-  const [posts, setPosts] = useState([]);
+export default function App() {
 
-  useEffect(() => {
-    const filePath = 'src/data/posts.json';
-    fetchData(filePath)
-      .then(data => setPosts(data)) 
-      .catch(error => console.error('Erro ao buscar os dados:', error));
-  }, []);
-
-  // const userData = {
-  //   username: 'exemplo',
-  //   points: 100,
-  //   badges: ['Iniciante', 'Contribuidor']
-  // };
-
-  return (
-    <div className="App">
-      <Login />
-      {/* <UserProfile {...userData} /> */}
-      <PostList posts={posts} />
-    </div>
+    return (   
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/login" element={<LoginScreen />} />  
+            <Route path="/posts" element={<PostListScreen />} />            
+          </Routes>
+        </div>
+      </BrowserRouter>
   );
 }
-
-export default App;

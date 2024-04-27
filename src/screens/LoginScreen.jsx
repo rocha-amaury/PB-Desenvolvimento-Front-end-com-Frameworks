@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import userData from '../data/users.json'; 
 
-function Navbar() {
+export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,8 +48,8 @@ function Navbar() {
   }
 
   return (
-    <div className="login">
-      <h1>Meu Fórum Gamificado</h1>
+    <div className="login" style={styles.container}>
+      <h1>Meu Fórum</h1>
       {isLoggedIn ? (
         <div className="nav-links">
           <span>Bem-vindo, {username}!</span>
@@ -78,4 +78,12 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+const styles = {
+  container: {
+    backgroundColor: "#333",
+    color: "#fff",
+    padding: "1rem",
+    textAlign: "center",
+  },
+};
+

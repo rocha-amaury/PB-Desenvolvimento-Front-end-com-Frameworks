@@ -1,0 +1,87 @@
+
+.header {
+  background-color: white;
+  height: 64px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  top: 0;
+  position: sticky;  
+}
+
+.container {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0px 24px;
+  height:100%;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  margin-right: 12px;
+}
+
+.logo span {
+  font-weight: 500;
+  color: rgb(255, 153, 102);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 153, 102);
+}
+
+.actions a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  padding: 12px;
+  color: rgb(255, 153, 102);
+}
+
+.actions span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  flex-grow: 1;
+  margin-left: 48px;
+  font-size: 0.9em;
+  text-align:center;
+}
+
+.menu span {
+  color: rgb(255, 153, 102);
+}
+
+.navItem {
+  color: rgb(255, 153, 102);
+  text-decoration:none;
+}
+
+@media screen and (max-width: 959px) {
+  .menu {
+    /* display: none;  */
+  }
+}

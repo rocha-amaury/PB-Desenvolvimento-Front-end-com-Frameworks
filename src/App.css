@@ -1,27 +1,19 @@
+@tailwind utilities;
+
 main {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
   margin: 0;
   padding: 0;
 }
 
-.login {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-}
 
-.post {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin: 1rem 0;
-}
 
-.user-profile {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin: 1rem 0;
-}
+
+

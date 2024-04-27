@@ -3,7 +3,7 @@ import Post from './Post';
 
 function PostList({ posts }) {
   return (
-    <div className="post-list">
+    <div>
       {posts.map((post, index) => (
         <Post key={index} {...post} />
       ))}

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Post({ title, content, author, date, keywords, commentsCount, likesCount, dislikesCount }) {
+export default function Post({ title, content, author, date, keywords, commentsCount, likesCount, dislikesCount }) {
   return (
-    <div className="post">
+    <div className="post" style={styles.container}>
       <h2>{title}</h2>
       <p>{content}</p>
       <p>Por: {author}</p>
@@ -11,9 +11,14 @@ function Post({ title, content, author, date, keywords, commentsCount, likesCoun
       <p>Comentários: {commentsCount}</p>
       <p>Curtidas: {likesCount}</p>
       <p>Descurtidas: {dislikesCount}</p>
-
     </div>
   );
 }
 
-export default Post;
+const styles = {
+  container: {
+    border: "1px solid #ccc",
+    padding: "1rem",
+    margin: "1rem 0",
+  },
+};
