@@ -26,18 +26,6 @@ export function Header() {
               <span className={styles.title}>Meu Fórum</span>
             </div>
           </div>
-          {/* <div className={styles.menu}> */}
-            {/* <div>
-              <span>Login</span>
-            </div>
-            <div>
-              <span>Posts</span>
-            </div> */}
-            {/* <div>
-              <Link to="/posts">Posts</Link>
-            </div> */}
-            
-          {/* </div> */}
 
           <nav className={styles.menu}>
             <Link className={styles.navItem} to="/" >Home</Link>

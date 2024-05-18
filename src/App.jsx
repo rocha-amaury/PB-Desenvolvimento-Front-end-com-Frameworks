@@ -1,8 +1,6 @@
 import "@fontsource/roboto";
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { fetchData } from './api/api';
 import { Header } from "./layout/Header/Header.jsx";
 import PostListScreen from "./screens/PostListScreen.jsx";
 import HomeScreen from "./screens/HomeScreen.jsx";

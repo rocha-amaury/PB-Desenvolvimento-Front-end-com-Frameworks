@@ -1,11 +1,11 @@
 import React from 'react';
-import Post from './Post';
+import PostCard from './PostCard';
 
 function PostList({ posts }) {
   return (
     <div>
       {posts.map((post, index) => (
-        <Post key={index} {...post} />
+        <PostCard key={index} {...post} />
       ))}
     </div>
   );
