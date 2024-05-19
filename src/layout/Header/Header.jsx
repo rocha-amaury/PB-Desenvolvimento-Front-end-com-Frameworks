@@ -31,6 +31,7 @@ export function Header() {
             <Link className={styles.navItem} to="/" >Home</Link>
             <Link className={styles.navItem} to="/login" >Login</Link>            
             <Link className={styles.navItem} to="/posts" >Posts</Link>
+            <Link className={styles.navItem} to="/signup" >Cadastro</Link>
           </nav>
           
           <div className={styles.actions}>

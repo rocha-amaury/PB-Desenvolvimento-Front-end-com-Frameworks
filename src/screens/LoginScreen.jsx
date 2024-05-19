@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import userData from '../data/users.json'; 
+import userData from '../data/usersData.json'; 
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
