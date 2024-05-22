@@ -20,7 +20,7 @@ class User {
   }
 
   assignBadges() {
-    // Lógica para atribuir badges
+    
   }
 }
 

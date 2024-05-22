@@ -24,6 +24,7 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@fontsource/roboto": "^5.0.12",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.23.0",
