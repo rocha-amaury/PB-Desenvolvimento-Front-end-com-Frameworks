@@ -1,43 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UserCard from "../components/UserCard";
 import UserList from "../components/UserList";
-import { useEffect } from "react";
+import { fetchUsers } from '../utils.jsx';
 
 export default function usersListScreen(props) {
   const action = props.action;
 
-  const [users, setusers] = useState(null);
+  const [users, setUsers] = useState(null);
   const [message, setMessage] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   const baseUrl = "https://pb-forum-14fbe-default-rtdb.firebaseio.com/";
 
-  function convertData(data) {
-    const ids = Object.keys(data);
-    let users = Object.values(data);
-    return users.map((user, index) => {
-      return {
-        id: ids[index],
-        ...user,
-      };
-    });
-  }
-
   useEffect(() => {
-    fetch(`${baseUrl}/users.json`)
-      .then(async (resp) => {
-        const respUsers = await resp.json();
-        let convertedUsers = convertData(respUsers);
-        setusers(convertedUsers);
-        console.log(convertedUsers)
-      })
-      .catch((err) => setMessage(err.message))
-      .finally((_) => setLoading(false));
+    async function getUsers() {
+      try {
+        const fetchedUsers = await fetchUsers(baseUrl);
+        setUsers(fetchedUsers);
+        setLoading(false);
+      } catch (error) {
+        setMessage(error.message);
+        setLoading(false);
+      }
+    }
+    getUsers();
   }, []);
 
-  function selecionarLivro(book) {
-    action(book);
-  }
+  // function convertData(data) {
+  //   const ids = Object.keys(data);
+  //   let users = Object.values(data);
+  //   return users.map((user, index) => {
+  //     return {
+  //       id: ids[index],
+  //       ...user,
+  //     };
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   fetch(`${baseUrl}/users.json`)
+  //     .then(async (resp) => {
+  //       const respUsers = await resp.json();
+  //       let convertedUsers = convertData(respUsers);
+  //       setUsers(convertedUsers);
+  //       console.log(convertedUsers)
+  //     })
+  //     .catch((err) => setMessage(err.message))
+  //     .finally((_) => setLoading(false));
+  // }, []);
+
 
   return (
     <div

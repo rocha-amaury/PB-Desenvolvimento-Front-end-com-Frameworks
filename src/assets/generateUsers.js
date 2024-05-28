@@ -14,7 +14,7 @@ const generateUsers = (numUsers) => {
   const users = [];
   for (let i = 0; i < numUsers; i++) {
     const user = {
-      _id: faker.string.uuid(),
+      userId: faker.string.uuid(),
       username: faker.internet.userName(),
       name: faker.person.fullName(),
       email: faker.internet.email(),
@@ -31,7 +31,7 @@ const generateUsers = (numUsers) => {
 const users = generateUsers(10);
 
 // Salva os usuários em um arquivo JSON
-const filePath = path.join(__dirname, 'users.json');
+const filePath = path.join(__dirname, 'usersTest.json');
 fs.writeFileSync(filePath, JSON.stringify(users, null, 2), 'utf-8');
 
 console.log('Arquivo users.json criado com sucesso!');

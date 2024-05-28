@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { loginSuccess, loginFailure } from '..actions/loginActions';
+import { fetchUsers } from '../utils.jsx';
 
 import userData from '../data/usersData.json'; 
 
@@ -7,6 +10,26 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState('');
+  
+  const [userData, setUserData] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  const baseUrl = "https://pb-forum-14fbe-default-rtdb.firebaseio.com/";
+
+  useEffect(() => {
+    async function getUsers() {
+      try {
+        const fetchedUsers = await fetchUsers(baseUrl);
+        setUserData(fetchedUsers);
+        setLoading(false);
+      } catch (error) {
+        setMessage(error.message);
+        setLoading(false);
+      }
+    }
+    getUsers();
+  }, []);
 
   function handleLogin() {
     setError(''); 

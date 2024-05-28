@@ -7,6 +7,7 @@ import HomeScreen from "./screens/HomeScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import SignUpScreen from "./screens/SignUpScreen.jsx";
 import UsersListScreen from "./screens/UsersListScreen.jsx";
+import UsersInsertScreen from "./screens/UsersInsertScreen.jsx";
 
 export default function App() {
 
@@ -19,7 +20,8 @@ export default function App() {
             <Route path="/login" element={<LoginScreen />} />  
             <Route path="/posts" element={<PostListScreen />} />            
             <Route path="/signup" element={<SignUpScreen />} />     
-            <Route path="/users" element={<UsersListScreen />} />   
+            <Route path="/users" element={<UsersListScreen />} /> 
+            <Route path="/userCreate" element={<UsersInsertScreen />} />   
           </Routes>
         </div>
       </BrowserRouter>
