@@ -1,24 +1,227 @@
-import React from 'react';
+import React, { useState } from "react";
 
-export default function Post({ title, content, author, date, keywords, commentsCount, likesCount, dislikesCount }) {
+// export default function PostCard({ post }) {
+//   return (
+//     <div className="post" style={styles.container}>
+//       <h2>{post.title}</h2>
+//       <p>{post.content}</p>
+//       <p>Por: {post.author}</p>
+//       <p>Data: {post.date}</p>
+//       <p>Palavras-chave: {post.keywords}</p>
+//       <p>Comentários: {post.commentsCount}</p>
+//       <p>Curtidas: {post.likesCount}</p>
+//       <p>Descurtidas: {post.dislikesCount}</p>
+//     </div>
+//   );
+// }
+
+// const styles = {
+//   container: {
+//     border: "1px solid #ccc",
+//     padding: "1rem",
+//     margin: "1rem 0",
+//   },
+// };
+
+const PostCard = ({ id, avatar, name, username, text }) => {
+  const [isEditing, setEditing] = useState(false);
+  const [editedText, setEditedText] = useState(text);
+  const [likes, setLikes] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState("");
+
+  const handleEditClick = () => {
+    setEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setEditing(false);
+    // Aqui você pode adicionar a lógica para salvar o texto editado
+  };
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    setLikes(isLiked ? likes - 1 : likes + 1);
+  };
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    const newComment = { id: comments.length + 1, text: commentText };
+    setComments([...comments, newComment]);
+    setCommentText("");
+  };
+
+  const handleDeleteClick = () => {
+    // Aqui você pode adicionar a lógica para deletar o post
+  };
+
+
+  
+
   return (
-    <div className="post" style={styles.container}>
-      <h2>{title}</h2>
-      <p>{content}</p>
-      <p>Por: {author}</p>
-      <p>Data: {date}</p>
-      <p>Palavras-chave: {keywords}</p>
-      <p>Comentários: {commentsCount}</p>
-      <p>Curtidas: {likesCount}</p>
-      <p>Descurtidas: {dislikesCount}</p>
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <img src={avatar} alt="Avatar" style={styles.avatar} />
+        <div>
+          <div style={styles.userInfo}>
+            <span style={styles.name}>{name}</span>
+            <span style={styles.username}>@{username}</span>
+          </div>
+          <div>
+            {isEditing ? (
+              <textarea
+                style={styles.textarea}
+                value={editedText}
+                onChange={(e) => setEditedText(e.target.value)}
+              />
+            ) : (
+              <p style={styles.text}>{text}</p>
+            )}
+          </div>
+        </div>
+      </div>
+      <div style={styles.actions}>
+        <button style={styles.actionButton} onClick={handleLikeClick}>
+          {isLiked ? (
+            <i className="fas fa-heart" style={styles.iconLiked}></i>
+          ) : (
+            <i className="far fa-heart" style={styles.icon}></i>
+          )}
+          {likes}
+        </button>
+        <button
+          style={styles.actionButton}
+          onClick={() => console.log("Comment")}
+        >
+          <i className="far fa-comment" style={styles.icon}></i>
+        </button>
+        <button
+          style={styles.actionButton}
+          onClick={isEditing ? handleSaveClick : handleEditClick}
+        >
+          {isEditing ? (
+            <i className="far fa-save" style={styles.icon}></i>
+          ) : (
+            <i className="far fa-edit" style={styles.icon}></i>
+          )}
+        </button>
+        <button style={styles.actionButton} onClick={handleDeleteClick}>
+          <i className="far fa-trash-alt" style={styles.icon}></i>
+        </button>
+      </div>
+      <div>
+        <h3>Comments</h3>
+        <form onSubmit={handleCommentSubmit}>
+          <input
+            type="text"
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            placeholder="Add a comment"
+            style={styles.commentInput}
+          />
+          <button type="submit" style={styles.commentButton}>
+            Add
+          </button>
+        </form>
+        <ul style={styles.commentList}>
+          {comments.map((comment) => (
+            <li key={comment.id}>{comment.text}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-}
+};
 
 const styles = {
   container: {
-    border: "1px solid #ccc",
+    border: "1px solid #e1e8ed",
+    borderRadius: "8px",
     padding: "1rem",
-    margin: "1rem 0",
+    marginBottom: "1rem",
+    backgroundColor: "#fff",
+    maxWidth: "600px",
+    margin: "0 auto",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "0.5rem",
+  },
+  avatar: {
+    borderRadius: "50%",
+    width: "50px",
+    height: "50px",
+    marginRight: "0.5rem",
+  },
+  userInfo: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  name: {
+    fontSize: "1rem",
+    fontWeight: "bold",
+  },
+  username: {
+    fontSize: "0.875rem",
+    color: "#657786",
+  },
+  text: {
+    fontSize: "1rem",
+    marginBottom: "0.5rem",
+  },
+  textarea: {
+    width: "100%",
+    minHeight: "50px",
+    fontSize: "1rem",
+    marginBottom: "0.5rem",
+    padding: "0.5rem",
+  },
+  actions: {
+    display: "flex",
+    justifyContent: "space-between",
+    maxWidth: "250px",
+    marginTop: "0.5rem",
+  },
+  actionButton: {
+    cursor: "pointer",
+    color: "#1DA1F2",
+    border: "none",
+    backgroundColor: "transparent",
+    fontSize: "1rem",
+    display: "flex",
+    alignItems: "center",
+  },
+  icon: {
+    marginRight: "0.25rem",
+  },
+  iconLiked: {
+    color: "red",
+    marginRight: "0.25rem",
+  },
+  commentInput: {
+    width: "calc(100% - 70px)",
+    padding: "0.5rem",
+    borderRadius: "4px 0 0 4px",
+    border: "1px solid #ccc",
+    borderTop: "none",
+    borderRight: "none",
+    borderBottom: "none",
+  },
+  commentButton: {
+    width: "70px",
+    padding: "0.5rem",
+    backgroundColor: "#1DA1F2",
+    color: "#fff",
+    border: "none",
+    borderRadius: "0 4px 4px 0",
+    cursor: "pointer",
+  },
+  commentList: {
+    listStyleType: "none",
+    padding: 0,
   },
 };
+
+export default PostCard;

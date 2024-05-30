@@ -5,7 +5,7 @@ function PostList({ posts }) {
   return (
     <div>
       {posts.map((post, index) => (
-        <PostCard key={index} {...post} />
+        <PostCard key={index} post={post} />
       ))}
     </div>
   );

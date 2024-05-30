@@ -1,133 +1,139 @@
-[
-  {
-    "userId": "5a3d6ed7-1610-4ff8-b58b-7d6e90bc7b12",
-    "username": "Lois_Harvey7",
-    "name": "Cheryl Ebert",
-    "email": "Jadon88@gmail.com",
-    "avatar": "https://avatars.githubusercontent.com/u/55178535",
-    "password": "xDnYqythzuUQKJ0",
-    "points": 403,
+{
+  "user1": {
+    "userId": "451e3ce7-edc7-4940-b73b-4f5ff53cc62b",
+    "username": "Laurine_Hartmann98",
+    "name": "Mary Oberbrunner",
+    "email": "Shania.Pfannerstill9@gmail.com",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1171.jpg",
+    "password": "yDN7d5jAfpoAOm3",
+    "points": 561,
+    "badges": [
+      "expert",
+      "beginner"
+    ]
+  },
+  "user2": {
+    "userId": "50827a2f-8d66-4b90-9495-ae1b53277ee4",
+    "username": "Neha93",
+    "name": "Mr. Jermaine Conroy",
+    "email": "Carmela84@gmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/37565234",
+    "password": "87lG6wUjyZ93lFe",
+    "points": 790,
     "badges": [
       "beginner",
-      "expert",
       "advanced",
+      "intermediate",
+      "expert"
+    ]
+  },
+  "user3": {
+    "userId": "7e736751-866b-4bcb-b485-694c05af7ec1",
+    "username": "Maximillian_OReilly94",
+    "name": "Kristina Trantow",
+    "email": "Orin9@gmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/2117551",
+    "password": "F6U_RkJOjvlEFAz",
+    "points": 50,
+    "badges": [
+      "beginner",
       "intermediate"
     ]
   },
-  {
-    "userId": "658eec57-5445-4ecf-8a3a-fbd02556ff4f",
-    "username": "Claire.Mills",
-    "name": "Joann Jacobi",
-    "email": "Sydnie73@hotmail.com",
+  "user4": {
+    "userId": "2b705731-04e2-4ced-aa9c-2c009b32c8b4",
+    "username": "Autumn_Reynolds",
+    "name": "Vickie Bernier",
+    "email": "Maxine64@hotmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/67696618",
+    "password": "DDby2nEHVsM_f6I",
+    "points": 812,
+    "badges": [
+      "beginner"
+    ]
+  },
+  "user5": {
+    "userId": "cd76d468-45fb-4023-bfbc-60ae45742ccb",
+    "username": "Zechariah56",
+    "name": "Alberta Wilkinson",
+    "email": "Janessa_McDermott@yahoo.com",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/505.jpg",
-    "password": "sIXf_0RfqeN8UgI",
-    "points": 288,
+    "password": "y0wjeVghpS8VTC8",
+    "points": 699,
     "badges": [
+      "intermediate",
+      "advanced",
+      "expert",
+      "beginner"
+    ]
+  },
+  "user6": {
+    "userId": "f67246a7-970e-4063-8e37-dea8c1677a6f",
+    "username": "Darrick_Lowe",
+    "name": "Priscilla Erdman-Ratke",
+    "email": "Janae_Ernser@yahoo.com",
+    "avatar": "https://avatars.githubusercontent.com/u/29096308",
+    "password": "EJvn5SYimM6j31d",
+    "points": 899,
+    "badges": [
+      "intermediate",
       "beginner",
       "expert"
     ]
   },
-  {
-    "userId": "c9c5f0b6-bbb8-4893-a623-49749c6622bd",
-    "username": "Shaun_Collins",
-    "name": "Ralph Crist",
-    "email": "Brigitte37@hotmail.com",
-    "avatar": "https://avatars.githubusercontent.com/u/96056971",
-    "password": "Z6rEdpvDn63chKd",
-    "points": 495,
-    "badges": [
-      "expert",
-      "advanced"
-    ]
-  },
-  {
-    "userId": "5bbb5023-53ab-43ff-af87-5f456f686f53",
-    "username": "Veda_Larkin58",
-    "name": "Samantha Vandervort",
-    "email": "Weldon.Wiegand@yahoo.com",
-    "avatar": "https://avatars.githubusercontent.com/u/34362378",
-    "password": "fy2PC1pBsQr7VSA",
-    "points": 214,
+  "user7": {
+    "userId": "3fb99649-54ce-4166-9398-666ba4e471be",
+    "username": "Koby_Graham36",
+    "name": "Billie Schaden IV",
+    "email": "Ross_Greenholt68@hotmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/76384386",
+    "password": "02eB_ZnAMxrc9nv",
+    "points": 106,
     "badges": [
       "intermediate"
     ]
   },
-  {
-    "userId": "390a16ac-31d7-41f9-8259-270fc8ba0d4a",
-    "username": "Alek79",
-    "name": "Meghan Lynch",
-    "email": "Ward41@gmail.com",
-    "avatar": "https://avatars.githubusercontent.com/u/75172538",
-    "password": "F_NPlSq2_BWLvGE",
-    "points": 279,
+  "user8": {
+    "userId": "0eb64bd6-a048-4508-9b22-632f74161303",
+    "username": "Chelsie_Stracke",
+    "name": "Santos O'Connell",
+    "email": "Sylvester.Bins32@gmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/13620806",
+    "password": "DKDuEsWhwjY2S8M",
+    "points": 228,
     "badges": [
       "intermediate",
-      "advanced",
-      "beginner"
-    ]
-  },
-  {
-    "userId": "ed669c6e-4b45-4cd7-a6e9-0a18cfdfbd0d",
-    "username": "Ciara90",
-    "name": "Bernice Rau",
-    "email": "Alana16@gmail.com",
-    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/618.jpg",
-    "password": "4EKFGxj89GU4Rit",
-    "points": 874,
-    "badges": [
-      "advanced"
-    ]
-  },
-  {
-    "userId": "221b0cd2-4287-4f9f-8385-b814030ca37d",
-    "username": "Tremaine.Schamberger",
-    "name": "Domingo Conn",
-    "email": "Deborah.Steuber93@yahoo.com",
-    "avatar": "https://avatars.githubusercontent.com/u/42011020",
-    "password": "tZLGNfR0jGyJL1S",
-    "points": 462,
-    "badges": [
       "expert",
-      "intermediate",
       "advanced",
       "beginner"
     ]
   },
-  {
-    "userId": "93401bbf-9554-4819-85a6-e26eef9c91de",
-    "username": "Ike.Lang",
-    "name": "Floyd Frami",
-    "email": "Mariano.Halvorson@yahoo.com",
-    "avatar": "https://avatars.githubusercontent.com/u/31834362",
-    "password": "blog2OYy1CttFKe",
-    "points": 352,
+  "user9": {
+    "userId": "7f984e4c-eeaa-401d-87c7-c0a88c906ac9",
+    "username": "Kody.Lang43",
+    "name": "Kari Hauck",
+    "email": "Tracy.Kertzmann@yahoo.com",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1139.jpg",
+    "password": "3l736uumAf59IUX",
+    "points": 245,
     "badges": [
-      "expert"
+      "advanced",
+      "expert",
+      "beginner",
+      "intermediate"
     ]
   },
-  {
-    "userId": "c9131735-e815-41b8-b389-35d5479d62cd",
-    "username": "Porter.Tillman",
-    "name": "Kerry Cassin",
-    "email": "Anastasia56@hotmail.com",
-    "avatar": "https://avatars.githubusercontent.com/u/30229465",
-    "password": "KDA9X1Yganb8qJJ",
-    "points": 989,
+  "user10": {
+    "userId": "621f31eb-1d84-4b56-b575-bacf59ed67c7",
+    "username": "Michaela_Cremin1",
+    "name": "Harry Koch",
+    "email": "Madelynn_Price@yahoo.com",
+    "avatar": "https://avatars.githubusercontent.com/u/29870647",
+    "password": "7Sk4_cBTL1ToyUA",
+    "points": 956,
     "badges": [
       "beginner",
-      "advanced"
-    ]
-  },
-  {
-    "userId": "0e368471-2e03-4414-b908-b54f167d3e8b",
-    "username": "Ross63",
-    "name": "Earnest Hyatt",
-    "email": "Jamie48@yahoo.com",
-    "avatar": "https://avatars.githubusercontent.com/u/31816479",
-    "password": "kejtCqtFCGNis2d",
-    "points": 770,
-    "badges": [
       "intermediate"
     ]
   }
-]
+}
