@@ -21,7 +21,7 @@ export default function App() {
             <Route path="/posts" element={<PostListScreen />} />            
             <Route path="/signup" element={<SignUpScreen />} />     
             <Route path="/users" element={<UsersListScreen />} /> 
-            <Route path="/userCreate" element={<UsersInsertScreen />} />   
+            <Route path="/register" element={<UsersInsertScreen />} />   
           </Routes>
         </div>
       </BrowserRouter>

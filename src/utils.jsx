@@ -1,10 +1,10 @@
-function convertData(data) {
+export function convertData(data) {
   const ids = Object.keys(data);
-  let users = Object.values(data);
-  return users.map((user, index) => {
+  let items = Object.values(data);
+  return items.map((item, index) => {
     return {
       id: ids[index],
-      ...user,
+      ...item,
     };
   });
 }

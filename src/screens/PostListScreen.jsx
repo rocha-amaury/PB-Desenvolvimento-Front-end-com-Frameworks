@@ -1,21 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { fetchData } from '../api/api.jsx';
-import PostList from '../components/PostList';
+import React, { useEffect, useState } from 'react';
+import PostsList from '../components/PostsList';
+import { convertData } from '../utils';
+import { useSelector } from 'react-redux';
 
-export default function PostListScreen() {
+const PostsListScreen = () => {
   const [posts, setPosts] = useState([]);
+  const [message, setMessage] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  const currentUser = useSelector(state => state.auth.user);
+
+  const baseUrl = "https://pb-forum-14fbe-default-rtdb.firebaseio.com/";
 
   useEffect(() => {
-    const filePath = 'src/data/posts.json';
-    fetchData(filePath)
-      .then(data => setPosts(data)) 
-      .catch(error => console.error('Erro ao buscar os dados:', error));
+    fetch(`${baseUrl}/posts.json`)
+      .then(async (resp) => {
+        const respPosts = await resp.json();
+        let convertedPosts = convertData(respPosts);
+        convertedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setPosts(convertedPosts.slice(0, 10));
+      })
+      .catch((err) => setMessage(err.message))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
-    <div>
-      <PostList posts={posts} />
+    <div style={{ padding: '2rem'}}>
+      
+      {isLoading && <p>Loading...</p>}
+      {message && <p>{message}</p>}
+      {!isLoading && <PostsList posts={posts} currentUser={currentUser} />}
     </div>
   );
-}
+};
+
+export default PostsListScreen;
+
 

@@ -125,9 +125,11 @@ function generateComments() {
     comments = [""];
   } else {
     for (let i = 0; i < numComments; i++) {
+      const randomUser = faker.helpers.arrayElement(users);
       comments.push({
         commentId: faker.string.uuid(),
-        userId: faker.helpers.arrayElement(users).userId,
+        userId: randomUser.userId,
+        username: randomUser.username,
         text: faker.lorem.sentences(),
         createdAt: new Date(),
       });
@@ -142,14 +144,25 @@ function createRandomPost() {
   const randomUser = users[Math.floor(Math.random() * users.length)];
 
   const post = {
+    // postId: faker.string.uuid(),
+    // userId: randomUser.userId,
+    // titile: faker.lorem.sentence(),
+    // text: faker.lorem.paragraphs(),
+    // likes: faker.number.int({ min: 0, max: 1000 }),
+    // dislikes: faker.number.int({ min: 0, max: 1000 }),
+    // comments: generateComments(), //[""],
+    // createdAt: new Date(),
+
     postId: faker.string.uuid(),
+    title: faker.lorem.sentence(),
+    description: faker.lorem.paragraph(),
+    date: new Date().toISOString(),
     userId: randomUser.userId,
-    titile: faker.lorem.sentence(),
-    text: faker.lorem.paragraphs(),
+    username: randomUser.username,
+    keywords: faker.lorem.words(3).split(" "),
+    comments: generateComments(), //[""],
     likes: faker.number.int({ min: 0, max: 1000 }),
     dislikes: faker.number.int({ min: 0, max: 1000 }),
-    comments: generateComments(), //[""],
-    createdAt: new Date(),
   };
   return post;
 }

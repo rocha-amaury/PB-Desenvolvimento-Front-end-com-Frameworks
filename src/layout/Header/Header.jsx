@@ -3,12 +3,15 @@ import styles from "./Header.module.css";
 import { FaGithub } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 import React, { useState } from "react";
 import Drawer from "./Drawer";
 
 export function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const currentUser = useSelector(state => state.auth.user);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -33,13 +36,14 @@ export function Header() {
             <Link className={styles.navItem} to="/posts" >Posts</Link>
             <Link className={styles.navItem} to="/signup" >Cadastro</Link>
             <Link className={styles.navItem} to="/users" >Usuários</Link>
-            <Link className={styles.navItem} to="/userCreate" >Cria Usuário</Link>
+            <Link className={styles.navItem} to="/register" >Cria Usuário</Link>
           </nav>
           
           <div className={styles.actions}>
             <div>
               <a href="">
-                <FaGithub size="30px" />
+                {/* <FaGithub size="30px" /> */}
+                {currentUser && <p>Welcome, {currentUser.name}!</p>}
               </a>
             </div>
             <div>
