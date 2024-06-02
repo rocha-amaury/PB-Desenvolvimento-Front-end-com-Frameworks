@@ -9,9 +9,17 @@ import UsersListScreen from "./screens/UsersListScreen.jsx";
 import UsersInsertScreen from "./screens/UsersInsertScreen.jsx";
 import PostListScreen from "./screens/PostListScreen.jsx";
 import PostDetailsScreen from './screens/PostDetailsScreen.jsx';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchPosts } from './store/reducers/postsSlice';
 
 export default function App() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+  
     return (   
       <BrowserRouter>
         <div>

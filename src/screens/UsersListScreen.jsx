@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import UserCard from "../components/UserCard";
 import UserList from "../components/UserList";
-import { fetchUsers } from '../utils.jsx';
+import { fetchUsers } from '../utils.js';
 
 export default function usersListScreen(props) {
   const action = props.action;
@@ -15,7 +15,7 @@ export default function usersListScreen(props) {
   useEffect(() => {
     async function getUsers() {
       try {
-        const fetchedUsers = await fetchUsers(baseUrl);
+        const fetchedUsers = await fetchUsers(baseUrl);        
         setUsers(fetchedUsers);
         setLoading(false);
       } catch (error) {

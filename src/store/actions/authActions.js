@@ -27,7 +27,7 @@ import { getUsers } from '../services/userService';
 
 export const loginUser = (credentials, setMessage) => async (dispatch) => {
   try {
-    const users = await getUsers();
+    const users = await getUsers();    
     const user = users.find(
       (u) => u.email === credentials.email && u.password === credentials.password
     );

@@ -7,10 +7,7 @@
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1171.jpg",
     "password": "yDN7d5jAfpoAOm3",
     "points": 561,
-    "badges": [
-      "expert",
-      "beginner"
-    ]
+    "badges": ["expert", "beginner"]
   },
   "user2": {
     "userId": "50827a2f-8d66-4b90-9495-ae1b53277ee4",
@@ -20,12 +17,7 @@
     "avatar": "https://avatars.githubusercontent.com/u/37565234",
     "password": "87lG6wUjyZ93lFe",
     "points": 790,
-    "badges": [
-      "beginner",
-      "advanced",
-      "intermediate",
-      "expert"
-    ]
+    "badges": ["beginner", "advanced", "intermediate", "expert"]
   },
   "user3": {
     "userId": "7e736751-866b-4bcb-b485-694c05af7ec1",
@@ -35,10 +27,7 @@
     "avatar": "https://avatars.githubusercontent.com/u/2117551",
     "password": "F6U_RkJOjvlEFAz",
     "points": 50,
-    "badges": [
-      "beginner",
-      "intermediate"
-    ]
+    "badges": ["beginner", "intermediate"]
   },
   "user4": {
     "userId": "2b705731-04e2-4ced-aa9c-2c009b32c8b4",
@@ -48,9 +37,7 @@
     "avatar": "https://avatars.githubusercontent.com/u/67696618",
     "password": "DDby2nEHVsM_f6I",
     "points": 812,
-    "badges": [
-      "beginner"
-    ]
+    "badges": ["beginner"]
   },
   "user5": {
     "userId": "cd76d468-45fb-4023-bfbc-60ae45742ccb",
@@ -60,12 +47,7 @@
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/505.jpg",
     "password": "y0wjeVghpS8VTC8",
     "points": 699,
-    "badges": [
-      "intermediate",
-      "advanced",
-      "expert",
-      "beginner"
-    ]
+    "badges": ["intermediate", "advanced", "expert", "beginner"]
   },
   "user6": {
     "userId": "f67246a7-970e-4063-8e37-dea8c1677a6f",
@@ -75,11 +57,7 @@
     "avatar": "https://avatars.githubusercontent.com/u/29096308",
     "password": "EJvn5SYimM6j31d",
     "points": 899,
-    "badges": [
-      "intermediate",
-      "beginner",
-      "expert"
-    ]
+    "badges": ["intermediate", "beginner", "expert"]
   },
   "user7": {
     "userId": "3fb99649-54ce-4166-9398-666ba4e471be",
@@ -89,9 +67,7 @@
     "avatar": "https://avatars.githubusercontent.com/u/76384386",
     "password": "02eB_ZnAMxrc9nv",
     "points": 106,
-    "badges": [
-      "intermediate"
-    ]
+    "badges": ["intermediate"]
   },
   "user8": {
     "userId": "0eb64bd6-a048-4508-9b22-632f74161303",
@@ -101,12 +77,7 @@
     "avatar": "https://avatars.githubusercontent.com/u/13620806",
     "password": "DKDuEsWhwjY2S8M",
     "points": 228,
-    "badges": [
-      "intermediate",
-      "expert",
-      "advanced",
-      "beginner"
-    ]
+    "badges": ["intermediate", "expert", "advanced", "beginner"]
   },
   "user9": {
     "userId": "7f984e4c-eeaa-401d-87c7-c0a88c906ac9",
@@ -116,12 +87,7 @@
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1139.jpg",
     "password": "3l736uumAf59IUX",
     "points": 245,
-    "badges": [
-      "advanced",
-      "expert",
-      "beginner",
-      "intermediate"
-    ]
+    "badges": ["advanced", "expert", "beginner", "intermediate"]
   },
   "user10": {
     "userId": "621f31eb-1d84-4b56-b575-bacf59ed67c7",
@@ -131,9 +97,6 @@
     "avatar": "https://avatars.githubusercontent.com/u/29870647",
     "password": "7Sk4_cBTL1ToyUA",
     "points": 956,
-    "badges": [
-      "beginner",
-      "intermediate"
-    ]
+    "badges": ["beginner", "intermediate"]
   }
 }

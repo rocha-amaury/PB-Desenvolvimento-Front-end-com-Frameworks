@@ -20,9 +20,8 @@ const PostsList = ({ posts, currentUser, refreshPosts }) => {
     <div style={styles.container}>
       {posts.map((post) => (
         <PostCard
-          key={post.id}
+          key={post.key}
           post={post}
-          currentUser={currentUser}
           refreshPosts={refreshPosts}
         />
 

@@ -1,13 +1,14 @@
 import { faker } from '@faker-js/faker';
 
   class Post {
-    constructor(title, description, userId, username, keywords = []) {
+    constructor(title, description, userId, username, userKey, keywords = []) {
       this.postId = faker.string.uuid();
       this.title = title;
       this.description = description;
       this.date = new Date().toISOString();
       this.userId = userId;
       this.username = username;
+      this.userKey = userKey;
       this.keywords = keywords;
       this.comments = [];
       this.likes = 0;
