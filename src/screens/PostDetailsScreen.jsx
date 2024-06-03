@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import CommentCard from "../components/CommentCard";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { updatePost, deletePost, addPost } from "../store/reducers/postsSlice";
 import CommentsList from "../components/CommentsList";
+import { faker } from "@faker-js/faker";
 
 const PostDetailsScreen = () => {
   const { postId } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [post, setPost] = useState(null);
   const [message, setMessage] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [comment, setComment] = useState("");
 
   const currentUser = useSelector((state) => state.auth.user) || {};
+  const { posts, status, error } = useSelector((state) => state.posts);
   const baseUrl = "https://pb-forum-14fbe-default-rtdb.firebaseio.com/";
 
   const updateUserPoints = async (userKey, points) => {
@@ -28,15 +32,15 @@ const PostDetailsScreen = () => {
     });
   };
 
-  useEffect(() => {
-    fetch(`${baseUrl}/posts/${postId}.json`)
-      .then(async (resp) => {
-        const data = await resp.json();
-        setPost(data);
-      })
-      .catch((err) => setMessage(err.message))
-      .finally(() => setLoading(false));
-  }, [postId]);
+  // useEffect(() => {
+  //   fetch(`${baseUrl}/posts/${postId}.json`)
+  //     .then(async (resp) => {
+  //       const data = await resp.json();        
+  //       setPost(data);
+  //     })
+  //     .catch((err) => setMessage(err.message))
+  //     .finally(() => setLoading(false));
+  // }, [postId]);
 
   const fetchPostDetails = async () => {
     try {
@@ -46,27 +50,44 @@ const PostDetailsScreen = () => {
       }
       const postData = await response.json();
       setPost(postData);
+      setLoading(false);
     } catch (error) {
       setMessage(error.message);
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchPostDetails();
+  }, [postId]);
 
   const handleComment = async () => {
     if (!comment) return;
     const newComment = {
-      text: comment,
+      postType: "comment",
+      postId: faker.string.uuid(),
+      parentPostId: post.postId,
+      title: "",
+      description: comment,
+      date: new Date().toISOString(),
+      userKey: currentUser.key,
       userId: currentUser.userId,
       username: currentUser.username,
-      date: new Date().toISOString(),
+      keywords: [""],
+      likes: 0,
+      dislikes: 0,
     };
-    const updatedComments = [...post.comments, newComment];
-    await fetch(`${baseUrl}/posts/${postId}.json`, {
-      method: "PATCH",
+
+    const response = await fetch(`${baseUrl}/posts.json`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ comments: updatedComments }),
+      body: JSON.stringify(newComment),
     });
+
+    const data = await response.json();
+    dispatch(addPost({ ...newComment, id: data.name }));
     setComment("");
     await updateUserPoints(currentUser.key, 2);
     if (currentUser.key !== post.userKey) {
@@ -84,6 +105,7 @@ const PostDetailsScreen = () => {
       },
       body: JSON.stringify({ likes: updatedLikes }),
     });
+    dispatch(updatePost({ ...post, likes: updatedLikes }));
     await updateUserPoints(currentUser.key, 1);
     if (currentUser.key !== post.userKey) {
       await updateUserPoints(post.userKey, 1);
@@ -100,15 +122,21 @@ const PostDetailsScreen = () => {
       },
       body: JSON.stringify({ dislikes: updatedDislikes }),
     });
+    dispatch(updatePost({ ...post, dislikes: updatedDislikes }));
     fetchPostDetails();
   };
 
   const handleEdit = async () => {
-    const updatedTitle = prompt("Insira novo título:", post.title);
-    const updatedDescription = prompt(
-      "Insira nova descrição:",
-      post.description,
-    );
+    let updatedTitle = prompt("Insira novo título:", post.title);
+    if (updatedTitle === null || updatedTitle.trim() === "") {
+      updatedTitle = post.title;
+    }
+
+    let updatedDescription = prompt("Insira nova descrição:", post.description);
+    if (updatedDescription === null || updatedDescription.trim() === "") {
+      updatedDescription = post.description;
+    }
+
     await fetch(`${baseUrl}/posts/${postId}.json`, {
       method: "PATCH",
       headers: {
@@ -119,6 +147,13 @@ const PostDetailsScreen = () => {
         description: updatedDescription,
       }),
     });
+    dispatch(
+      updatePost({
+        ...post,
+        title: updatedTitle,
+        description: updatedDescription,
+      }),
+    );
     fetchPostDetails();
   };
 
@@ -126,6 +161,7 @@ const PostDetailsScreen = () => {
     await fetch(`${baseUrl}/posts/${postId}.json`, {
       method: "DELETE",
     });
+    dispatch(deletePost(postId));
     navigate("/posts");
   };
 
@@ -140,6 +176,10 @@ const PostDetailsScreen = () => {
   if (!post) {
     return <p>Nenhum post encontrado.</p>;
   }
+
+  const postComments = posts.filter(
+    (p) => p.postType === "comment" && p.parentPostId === post.postId
+  );
 
   const styles = {
     container: {
@@ -200,41 +240,6 @@ const PostDetailsScreen = () => {
     },
   };
 
-  if (!post) {
-    return <p>Carregando...</p>;
-  }
-
-  // return (
-  //   <div style={{ padding: "2rem" }}>
-  //     <div style={styles.container}>
-  //       <div style={styles.title}>{post.title}</div>
-  //       <div style={styles.description}>{post.description}</div>
-  //       <div style={styles.meta}>
-  //         <span>By: {post.username}</span>
-  //         <span> | </span>
-  //         <span>{new Date(post.date).toLocaleString()}</span>
-  //         <span> | </span>
-  //         <span>{post.comments.length} comments</span>
-  //         <span> | </span>
-  //         <span>{post.likes} likes</span>
-  //         {currentUser.userId === post.userId && (
-  //           <>
-  //             <span> | </span>
-  //             <span>{post.dislikes} dislikes</span>
-  //           </>
-  //         )}
-  //       </div>
-  //       <div style={styles.comments}>
-  //         <div style={styles.commentTitle}>Comments:</div>
-  //         {/* {post.comments.map((comment, index) => (
-  //           <CommentCard key={index} comment={comment} />
-  //         ))} */}
-  //         <CommentsList comments={post.comments} />
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
-
   return (
     <div style={{ padding: "2rem" }}>
       <div style={styles.container}>
@@ -245,7 +250,7 @@ const PostDetailsScreen = () => {
           <span> | </span>
           <span>{new Date(post.date).toLocaleString()}</span>
           <span> | </span>
-          <span>{post.comments.length} comments</span>
+          <span>{postComments.length} comments</span>
           <span> | </span>
           <span>{post.likes} likes</span>
           {currentUser.userId === post.userId && (
@@ -287,7 +292,7 @@ const PostDetailsScreen = () => {
         )}
         <div>
           <h2>Comments</h2>
-          <CommentsList comments={post.comments} />
+          <CommentsList comments={postComments} />
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ const CommentsList = ({ comments }) => {
   return (
     <div style={styles.container}>
       {comments.map((comment, index) => (
-        <CommentCard key={index} comment={comment} />
+        <CommentCard key={index} post={comment} />
       ))}
     </div>
   );
