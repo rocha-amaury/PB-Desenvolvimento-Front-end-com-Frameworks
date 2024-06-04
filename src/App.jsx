@@ -12,6 +12,10 @@ import PostDetailsScreen from './screens/PostDetailsScreen.jsx';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPosts } from './store/reducers/postsSlice';
+import PostAddScreen from './screens/PostAddScreen.jsx';
+import PrivateRoute from './components/PrivateRoute';
+import UserProfileScreen from './screens/UserProfileScreen.jsx';
+import RankingScreen from './screens/RankingScreen';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,11 +30,24 @@ export default function App() {
           <Header />
           <Routes>
             <Route path="/" element={<HomeScreen />} />
-            <Route path="/login" element={<LoginScreen />} />  
+            
             <Route path="/posts" element={<PostListScreen />} />
             <Route path="/posts/:postId" element={<PostDetailsScreen />} />
-            <Route path="/signup" element={<SignUpScreen />} />     
+            
+            <Route
+              path="/add-post"
+              element={
+                <PrivateRoute>
+                  <PostAddScreen />
+                </PrivateRoute>
+              }
+            />
+
             <Route path="/users" element={<UsersListScreen />} /> 
+            <Route path="/users/:userId" element={<UserProfileScreen />} /> 
+            <Route path="/ranking" element={<RankingScreen />} /> 
+            
+            <Route path="/login" element={<LoginScreen />} />     
             <Route path="/register" element={<UsersInsertScreen />} />   
           </Routes>
         </div>

@@ -32,10 +32,11 @@ export function Header() {
 
           <nav className={styles.menu}>
             <Link className={styles.navItem} to="/" >Home</Link>
-            <Link className={styles.navItem} to="/login" >Login</Link>            
             <Link className={styles.navItem} to="/posts" >Posts</Link>
-            <Link className={styles.navItem} to="/signup" >Cadastro</Link>
+            <Link className={styles.navItem} to="/add-post" >Novo post</Link>
             <Link className={styles.navItem} to="/users" >Usuários</Link>
+            <Link className={styles.navItem} to="/ranking" >Ranking</Link>
+            <Link className={styles.navItem} to="/login" >Login</Link>            
             <Link className={styles.navItem} to="/register" >Cria Usuário</Link>
           </nav>
           

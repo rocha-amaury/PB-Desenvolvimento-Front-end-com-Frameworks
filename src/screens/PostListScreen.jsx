@@ -18,6 +18,7 @@ const PostsListScreen = () => {
     dispatch(fetchPosts());
   };
 
+
   let filteredPosts = posts.filter(post => post.postType === "post");
   filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 

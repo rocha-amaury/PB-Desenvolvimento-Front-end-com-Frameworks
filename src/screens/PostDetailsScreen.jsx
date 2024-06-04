@@ -127,33 +127,39 @@ const PostDetailsScreen = () => {
   };
 
   const handleEdit = async () => {
-    let updatedTitle = prompt("Insira novo título:", post.title);
-    if (updatedTitle === null || updatedTitle.trim() === "") {
-      updatedTitle = post.title;
-    }
+    e.stopPropagation();
 
     let updatedDescription = prompt("Insira nova descrição:", post.description);
     if (updatedDescription === null || updatedDescription.trim() === "") {
       updatedDescription = post.description;
     }
 
-    await fetch(`${baseUrl}/posts/${postId}.json`, {
+    let updatedTitle = post.title;
+
+    if (comment.postType === "post") {
+      updatedTitle = prompt("Insira novo título:", post.title);
+      if (updatedTitle === null || updatedTitle.trim() === "") {
+        updatedTitle = post.title;
+      }
+    }
+
+    const updatedData = {
+      description: updatedDescription,
+    };
+
+    if (comment.postType === "post") {
+      updatedData.title = updatedTitle;
+    }
+
+    await fetch(`${baseUrl}/posts/${post.id}.json`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title: updatedTitle,
-        description: updatedDescription,
-      }),
+      body: JSON.stringify(updatedData),
     });
-    dispatch(
-      updatePost({
-        ...post,
-        title: updatedTitle,
-        description: updatedDescription,
-      }),
-    );
+
+    dispatch(updatePost({ ...comment, ...updatedData }));
     fetchPostDetails();
   };
 
@@ -241,8 +247,17 @@ const PostDetailsScreen = () => {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div style={{ padding: "2rem" }}>     
+      
+      
       <div style={styles.container}>
+        
+        <div>Current User: {currentUser.key}</div>
+        <div>Post User: {post.userKey}</div>
+        <div>Post: {postId}</div>
+        <div>PostId: {post.postId}</div>
+        <div>PostType: {post.postType}</div>
+        
         <div style={styles.title}>{post.title}</div>
         <div style={styles.description}>{post.description}</div>
         <div style={styles.meta}>

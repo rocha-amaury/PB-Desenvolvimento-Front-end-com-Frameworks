@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updatePost, deletePost, addPost } from "../store/reducers/postsSlice";
 import { faker } from "@faker-js/faker";
+import { Link } from 'react-router-dom';
 
 const PostCard = ({ post, refreshPosts }) => {
   const navigate = useNavigate();
@@ -135,6 +136,16 @@ const PostCard = ({ post, refreshPosts }) => {
       method: "DELETE",
     });
     dispatch(deletePost(post.id));
+
+    const relatedPosts = posts.filter((p) => p.parentPostId === post.postId);
+
+    for (const relatedPost of relatedPosts) {
+      await fetch(`${baseUrl}/posts/${relatedPost.id}.json`, {
+        method: "DELETE",
+      });
+      dispatch(deletePost(relatedPost.id));
+    }
+    
     refreshPosts();
   };
 
@@ -211,7 +222,7 @@ const PostCard = ({ post, refreshPosts }) => {
           : post.description}
       </div>
       <div style={styles.meta}>
-        <span>By: {post.username}</span>
+        <span>By: <Link to={`/user/${post.userId}`}>{post.username}</Link></span>
         <span> | </span>
         <span>{new Date(post.date).toLocaleString()}</span>
         <span> | </span>

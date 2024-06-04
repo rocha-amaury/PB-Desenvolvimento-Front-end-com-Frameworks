@@ -1,9 +1,10 @@
 class User {
-  constructor(id, username, fullName, email, password, photo = null, points = 0, badges = []) {
-    this.id = id;
+  constructor(userId, username, name, email, avatar, password, points = 0, badges = []) {
+    this.userId = userId;
     this.username = username;
-    this.fullName = fullName;
+    this.name = name;
     this.email = email;
+    this.avatar = avatar;
     this.password = password;
     this.photo = photo;
     this.points = points;
