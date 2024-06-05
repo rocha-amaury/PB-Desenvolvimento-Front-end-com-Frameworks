@@ -1,4 +1,3 @@
-// import React from 'react';
 import styles from "./Header.module.css";
 import { FaGithub } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";

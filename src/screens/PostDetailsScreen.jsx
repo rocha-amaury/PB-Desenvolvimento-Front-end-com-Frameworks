@@ -32,16 +32,6 @@ const PostDetailsScreen = () => {
     });
   };
 
-  // useEffect(() => {
-  //   fetch(`${baseUrl}/posts/${postId}.json`)
-  //     .then(async (resp) => {
-  //       const data = await resp.json();        
-  //       setPost(data);
-  //     })
-  //     .catch((err) => setMessage(err.message))
-  //     .finally(() => setLoading(false));
-  // }, [postId]);
-
   const fetchPostDetails = async () => {
     try {
       const response = await fetch(`${baseUrl}/posts/${postId}.json`);
