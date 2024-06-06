@@ -100,6 +100,8 @@ const UserProfileScreen = () => {
   }
 
   return (
+    <>
+    <h2>Profile</h2>
     <div style={styles.container}>
       <img src={profile.avatar} alt="Avatar" style={styles.avatar} />
       <div style={styles.name}>{profile.name}</div>
@@ -112,6 +114,7 @@ const UserProfileScreen = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

@@ -65,6 +65,7 @@ const LoginScreen = () => {
         <h2>Login</h2>
         {message && <p style={styles.message}>{message}</p>}
         <input
+          name='email'
           type="email"
           placeholder="Email"
           value={email}
@@ -72,6 +73,7 @@ const LoginScreen = () => {
           style={styles.input}
         />
         <input
+          name='password'
           type="password"
           placeholder="Password"
           value={password}

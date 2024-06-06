@@ -6,7 +6,6 @@ class User {
     this.email = email;
     this.avatar = avatar;
     this.password = password;
-    this.photo = photo;
     this.points = points;
     this.badges = badges;
   }
