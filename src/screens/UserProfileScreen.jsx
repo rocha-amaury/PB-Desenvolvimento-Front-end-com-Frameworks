@@ -34,6 +34,13 @@ const UserProfileScreen = () => {
   };
 
   const styles = {
+    header: {
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: '1rem',
+      paddingTop: '2rem',
+    },
     container: {
       border: "1px solid #e1e8ed",
       borderRadius: "8px",
@@ -100,9 +107,9 @@ const UserProfileScreen = () => {
   }
 
   return (
-    <>
-    <h2>Profile</h2>
-    <div style={styles.container}>
+    <>    
+    <div style={styles.header}>Perfil do Usuário</div>
+    <div style={styles.container}>    
       <img src={profile.avatar} alt="Avatar" style={styles.avatar} />
       <div style={styles.name}>{profile.name}</div>
       <div style={styles.username}>@{profile.username}</div>

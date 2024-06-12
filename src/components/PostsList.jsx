@@ -1,6 +1,6 @@
 import React from "react";
 import PostCard from "./PostCard";
-import PostCardAntigo from "./PostCardAntigo";
+
 
 const PostsList = ({ posts, currentUser, refreshPosts }) => {
   const styles = {

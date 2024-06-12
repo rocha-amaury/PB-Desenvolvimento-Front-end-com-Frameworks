@@ -11,6 +11,7 @@ body {
   letter-spacing: 0.01071em;
   margin: 0;
   padding: 0;
+  min-width: 600px;
 }
 
 

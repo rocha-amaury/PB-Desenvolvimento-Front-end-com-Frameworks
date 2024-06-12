@@ -9,7 +9,9 @@ import { BsBroadcast, BsEnvelopePlusFill } from "react-icons/bs";
 import { PiUsersThreeFill } from "react-icons/pi";
 import { FaRankingStar } from "react-icons/fa6";
 import { RiLoginCircleFill } from "react-icons/ri";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Backdrop = styled.div`
   position: fixed;
@@ -39,13 +41,20 @@ const DrawerContent = styled.div`
 `;
 
 const Drawer = ({ isOpen, onClose }) => {
-
+  const currentUser = useSelector(state => state.auth.user);
 
   return (
     <>
       {isOpen && <Backdrop isOpen={isOpen} onClick={onClose} />}
       <DrawerContainer isOpen={isOpen} onClick={onClose}>
         <DrawerContent>
+
+          {currentUser && (
+            <Link to={`/users/${currentUser.key}`} style={{ textDecoration: "none", color: "inherit" }}>
+              <DrawerItem icon={<FaUser size="24px" />} text={`Bem vindo(a), ${currentUser.name}`} />
+            </Link>
+          )}
+          
           
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <DrawerItem icon={<IoMdHome size="24px"/>} text="Home" />

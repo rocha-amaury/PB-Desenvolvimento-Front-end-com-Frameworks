@@ -28,7 +28,8 @@ export function Header() {
               <span className={styles.title}>Meu Fórum</span>
             </div>
           </div>
-
+          
+          
           <nav className={styles.menu}>
             <Link className={styles.navItem} to="/" >Home</Link>
             <Link className={styles.navItem} to="/posts" >Posts</Link>
@@ -40,12 +41,13 @@ export function Header() {
           </nav>
           
           <div className={styles.actions}>
-            <div>
-              <a href="">
-                {/* <FaGithub size="30px" /> */}
-                {currentUser && <p>Welcome, {currentUser.name}!</p>}
-              </a>
-            </div>
+
+            {currentUser && (
+            <Link to={`/users/${currentUser.key}`} style={{ textDecoration: "none", color: "inherit" }}>
+              {currentUser && <span className={styles.actionsSpan} >Bem vindo(a), {currentUser.name}!</span>}
+            </Link>
+          )}
+
             <div>
               <span>
                 <RxHamburgerMenu size="20px" onClick={toggleDrawer} />

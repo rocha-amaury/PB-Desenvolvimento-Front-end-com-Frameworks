@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updatePost, deletePost, addPost } from "../store/reducers/postsSlice";
 import { faker } from "@faker-js/faker";
 import { Link } from 'react-router-dom';
+import { FaShareAlt, FaFlag, FaUserTag } from "react-icons/fa";
 
 const PostCard = ({ post, refreshPosts }) => {
   const navigate = useNavigate();
@@ -222,7 +223,8 @@ const PostCard = ({ post, refreshPosts }) => {
           : post.description}
       </div>
       <div style={styles.meta}>
-        <span>By: <Link to={`/user/${post.userId}`}>{post.username}</Link></span>
+        {/* <span>By: <Link to={`/user/${post.userId}`}>{post.username}</Link></span> */}
+        <span>By: {post.username}</span>
         <span> | </span>
         <span>{new Date(post.date).toLocaleString()}</span>
         <span> | </span>

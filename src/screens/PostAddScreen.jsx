@@ -77,7 +77,7 @@ const PostAddScreen = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Add New Post</h2>
+      <h2>Faça um novo Post</h2>
       <form style={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
@@ -102,7 +102,7 @@ const PostAddScreen = () => {
           style={styles.input}
         />
         <button type="submit" style={styles.button}>
-          Add Post
+          Salvar Post
         </button>
       </form>
     </div>

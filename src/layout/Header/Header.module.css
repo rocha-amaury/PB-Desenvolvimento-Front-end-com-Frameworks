@@ -80,8 +80,8 @@
   text-decoration:none;
 }
 
-@media screen and (max-width: 959px) {
-  .menu {
-    /* display: none;  */
+@media (max-width: 959px) {
+  .menu, .actionsSpan {
+    display: none;
   }
 }
