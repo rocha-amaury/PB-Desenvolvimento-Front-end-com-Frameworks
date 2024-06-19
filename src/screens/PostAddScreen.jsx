@@ -14,6 +14,20 @@ const PostAddScreen = () => {
   const currentUser = useSelector(state => state.auth.user) || {};
   const baseUrl = "https://pb-forum-14fbe-default-rtdb.firebaseio.com/";
 
+
+  const updateUserPoints = async (userKey, points) => {
+    const userResp = await fetch(`${baseUrl}/users/${userKey}.json`);
+    const user = await userResp.json();
+    const updatedPoints = user.points + points;
+    await fetch(`${baseUrl}/users/${userKey}.json`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ points: updatedPoints }),
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -40,6 +54,8 @@ const PostAddScreen = () => {
 
     const data = await response.json();
     dispatch(addPost({ ...newPost, id: data.name }));
+
+    await updateUserPoints(currentUser.key, 3);
 
     setTitle('');
     setDescription('');

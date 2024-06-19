@@ -1,9 +1,9 @@
-import PostListScreen from "./PostListScreen.jsx";
+import PostsListScreen from "./PostListScreen.jsx";
 
 export default function HomeScreen() {
   return (
     <main>
-      <PostListScreen />
+      <PostsListScreen />
     </main>
   );
 }

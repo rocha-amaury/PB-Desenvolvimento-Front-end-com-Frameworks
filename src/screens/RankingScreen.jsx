@@ -1,5 +1,3 @@
-// src/screens/RankingScreen.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

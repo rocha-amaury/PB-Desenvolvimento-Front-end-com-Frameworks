@@ -26,30 +26,6 @@ export default function usersListScreen(props) {
     getUsers();
   }, []);
 
-  // function convertData(data) {
-  //   const ids = Object.keys(data);
-  //   let users = Object.values(data);
-  //   return users.map((user, index) => {
-  //     return {
-  //       id: ids[index],
-  //       ...user,
-  //     };
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   fetch(`${baseUrl}/users.json`)
-  //     .then(async (resp) => {
-  //       const respUsers = await resp.json();
-  //       let convertedUsers = convertData(respUsers);
-  //       setUsers(convertedUsers);
-  //       console.log(convertedUsers)
-  //     })
-  //     .catch((err) => setMessage(err.message))
-  //     .finally((_) => setLoading(false));
-  // }, []);
-
-
   return (
     <div
       style={{
