@@ -42,6 +42,7 @@ const PostAddScreen = () => {
       keywords: keywords.split(',').map(k => k.trim()),
       likes: 0,
       dislikes: 0,
+      reports: 0,
     };
 
     const response = await fetch(`${baseUrl}/posts.json`, {

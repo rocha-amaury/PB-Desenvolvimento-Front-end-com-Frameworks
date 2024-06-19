@@ -1,28 +1,3 @@
-// export const login = (user) => ({
-//   type: 'LOGIN',
-//   payload: user,
-// });
-
-// export const logout = () => ({
-//   type: 'LOGOUT',
-// });
-
-
-// export const loginUser = (user) => {
-//   return {
-//     type: 'LOGIN_USER',
-//     payload: user
-//   };
-// };
-
-// export const logoutUser = () => {
-//   return {
-//     type: 'LOGOUT_USER'
-//   };
-// };
-
-
-
 import { getUsers } from '../services/userService';
 
 export const loginUser = (credentials, setMessage) => async (dispatch) => {

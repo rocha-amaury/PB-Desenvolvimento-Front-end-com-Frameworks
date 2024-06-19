@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updatePost, deletePost, addPost } from "../store/reducers/postsSlice";
 import CommentsList from "../components/CommentsList";
 import { faker } from "@faker-js/faker";
+import { fetchUsers } from "../store/reducers/usersSlice";
 
 const PostDetailsScreen = () => {
   const { postId } = useParams();
@@ -17,6 +18,51 @@ const PostDetailsScreen = () => {
   const currentUser = useSelector((state) => state.auth.user) || {};
   const { posts, status, error } = useSelector((state) => state.posts);
   const baseUrl = "https://pb-forum-14fbe-default-rtdb.firebaseio.com/";
+
+  const { users, status: usersStatus } = useSelector((state) => state.users);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [showUserList, setShowUserList] = useState(false);
+  
+  useEffect(() => {
+    if (usersStatus === 'idle') {
+      dispatch(fetchUsers());
+    }
+  }, [usersStatus, dispatch]);
+
+  const handleCommentChange = (e) => {
+    const value = e.target.value;
+    setComment(value);
+
+    if (value.includes("@")) {
+      const lastAtIndex = value.lastIndexOf("@");
+      const query = value.slice(lastAtIndex + 1);
+      setShowUserList(true);
+
+      if (query) {
+        const filtered = users.filter((user) =>
+          user.username.toLowerCase().includes(query.toLowerCase())
+        );
+        setFilteredUsers(filtered);
+      } else {
+        setFilteredUsers(users);
+      }
+    } else {
+      setShowUserList(false);
+    }
+  };
+
+  const handleUserSelect = (username) => {
+    const lastAtIndex = comment.lastIndexOf("@");
+    const newComment = comment.slice(0, lastAtIndex + 1) + username + " ";
+    setComment(newComment);
+    setShowUserList(false);
+  };
+
+  const extractKeywords = (text) => {
+    const regex = /@\w+/g;
+    return text.match(regex) || [];
+  };
+
 
   const updateUserPoints = async (userKey, points) => {
     const userResp = await fetch(`${baseUrl}/users/${userKey}.json`);
@@ -66,6 +112,7 @@ const PostDetailsScreen = () => {
       keywords: [""],
       likes: 0,
       dislikes: 0,
+      reports: 0,
     };
 
     const response = await fetch(`${baseUrl}/posts.json`, {
@@ -161,6 +208,26 @@ const PostDetailsScreen = () => {
     navigate("/posts");
   };
 
+  const handleReport = async () => {
+    const updatedReports = (post.reports || 0) + 1;
+    await fetch(`${baseUrl}/posts/${post.id}.json`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ reports: updatedReports }),
+    });
+    dispatch(updatePost({ ...post, reports: updatedReports }));
+    alert('Post denunciado com sucesso!');
+  };
+
+  const handleShare = async (e) => {
+    e.stopPropagation();
+    const postUrl = `${window.location.origin}/posts/${post.id}`;
+    navigator.clipboard.writeText(postUrl);
+    alert(`Link do post copiado para a área de transferência:\n\n${postUrl}`);
+  };
+
   if (isLoading) {
     return <p>Carregando...</p>;
   }
@@ -216,7 +283,14 @@ const PostDetailsScreen = () => {
     actions: {
       marginTop: "1rem",
       display: "flex",
+      flexDirection: "column",
       justifyContent: "space-between",
+    },
+    actionsButtons: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",      
+      gap: "2px",
     },
     button: {
       backgroundColor: "#1da1f2",
@@ -228,11 +302,29 @@ const PostDetailsScreen = () => {
       fontSize: "0.9rem",
     },
     commentInput: {
-      width: "100%",
+      // width: "100%",
       padding: "0.5rem",
       borderRadius: "16px",
       border: "1px solid #e1e8ed",
       marginBottom: "0.5rem",
+    },
+    reportButton: {
+      backgroundColor: "#ff4d4d",
+      color: "#fff",
+      border: "none",
+      padding: "0.5rem 1rem",
+      borderRadius: "16px",
+      cursor: "pointer",
+      fontSize: "0.9rem",
+    },
+    shareButton: {
+      backgroundColor: "#28a745",
+      color: "#fff",
+      border: "none",
+      padding: "0.5rem 1rem",
+      borderRadius: "16px",
+      cursor: "pointer",
+      fontSize: "0.9rem",
     },
   };
 
@@ -242,11 +334,11 @@ const PostDetailsScreen = () => {
       
       <div style={styles.container}>
         
-        <div>Current User: {currentUser.key}</div>
+        {/* <div>Current User: {currentUser.key}</div>
         <div>Post User: {post.userKey}</div>
         <div>Post: {postId}</div>
         <div>PostId: {post.postId}</div>
-        <div>PostType: {post.postType}</div>
+        <div>PostType: {post.postType}</div> */}
         
         <div style={styles.title}>{post.title}</div>
         <div style={styles.description}>{post.description}</div>
@@ -267,32 +359,53 @@ const PostDetailsScreen = () => {
         </div>
         {currentUser.userId && (
           <div style={styles.actions} onClick={(e) => e.stopPropagation()}>
+          {showUserList && (
+            <div style={{ position: 'absolute', backgroundColor: '#fff', border: '1px solid #ddd', zIndex: 1000 }}>
+              {filteredUsers.map((user) => (
+                <div key={user.id} onClick={() => handleUserSelect(user.username)}>
+                  {user.username}
+                </div>
+              ))}
+            </div>
+          )}              
             <input
               type="text"
               style={styles.commentInput}
               value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              // onChange={(e) => setComment(e.target.value)}
+              onChange={handleCommentChange}
               placeholder="Adcione um comentário..."
             />
-            <button style={styles.button} onClick={handleComment}>
-              Comment
-            </button>
-            <button style={styles.button} onClick={handleLike}>
-              Like
-            </button>
-            <button style={styles.button} onClick={handleDislike}>
-              Dislike
-            </button>
-            {currentUser.userId === post.userId && (
-              <>
-                <button style={styles.button} onClick={handleEdit}>
-                  Edit
-                </button>
-                <button style={styles.button} onClick={handleDelete}>
-                  Delete
-                </button>
-              </>
-            )}
+            <div style={styles.actionsButtons}>
+              <button style={styles.button} onClick={handleComment}>
+                Comment
+              </button>
+              <button style={styles.button} onClick={handleLike}>
+                Like
+              </button>
+              <button style={styles.button} onClick={handleDislike}>
+                Dislike
+              </button>
+              
+              {currentUser.userId === post.userId && (
+                <>
+                  <button style={styles.button} onClick={handleEdit}>
+                    Edit
+                  </button>
+                  <button style={styles.button} onClick={handleDelete}>
+                    Delete
+                  </button>
+                </>
+              )}
+              
+              <button style={styles.reportButton} onClick={handleReport}>
+                Report
+              </button>
+              <button style={styles.shareButton} onClick={handleShare}>
+                Share
+              </button>
+
+            </div>
           </div>
         )}
         <div>

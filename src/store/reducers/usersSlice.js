@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   const response = await fetch('https://pb-forum-14fbe-default-rtdb.firebaseio.com/users.json');
   const data = await response.json();
-  return Object.keys(data).map(key => ({ ...data[key], userId: key }));
+  return Object.keys(data).map(key => ({ ...data[key], id: key }));
 });
 
 const usersSlice = createSlice({

@@ -34,6 +34,7 @@ function createRandomTopic() {
     keywords: faker.lorem.words(3).split(" "),
     likes: faker.number.int({ min: 0, max: 1000 }),
     dislikes: faker.number.int({ min: 0, max: 1000 }),
+    reports: 0,
   };
   return post;
 }
@@ -60,6 +61,7 @@ function generateComments(posts) {
           keywords: faker.lorem.words(3).split(" "),
           likes: faker.number.int({ min: 0, max: 1000 }),
           dislikes: faker.number.int({ min: 0, max: 1000 }),
+          reports: 0,
         };
         newPosts.push(newPost);
       }
